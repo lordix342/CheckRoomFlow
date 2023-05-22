@@ -1,5 +1,6 @@
 package com.pride.test.flow.room
 
+import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -7,5 +8,6 @@ import androidx.room.PrimaryKey
 data class MyEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int?,
-    val stringgMane:String = "default"
+    val stringgMane:String = "default",
+    val imgUser: Bitmap?
 )

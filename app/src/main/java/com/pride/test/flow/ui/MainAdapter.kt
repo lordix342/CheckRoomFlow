@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.pride.test.flow.R
 import com.pride.test.flow.databinding.ItemBinding
 import com.pride.test.flow.room.MyEntity
@@ -18,8 +20,14 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ItemHolder>() {
     }
     class ItemHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemBinding.bind(item)
-        fun inflateItem(item: MyEntity) = with(binding.root) {
-            text = item.stringgMane
+        fun inflateItem(item: MyEntity) = with(binding) {
+            text.text = item.stringgMane
+            Glide.with(root.context)
+                .load(item.imgUser)
+                .circleCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.def_img)
+                .into(img)
         }
     }
 
